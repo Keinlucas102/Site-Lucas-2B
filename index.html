@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Navbar com JS</title>
+<link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark p-3">
+  <button class="btn btn-light menu-btn" data-target="inicio">Início</button>
+  <button class="btn btn-light menu-btn" data-target="sobre">Equação Simples</button>
+  <button class="btn btn-light menu-btn" data-target="contato">Equação do 2º</button>
+</nav>
+
+<div class="container mt-4">
+  <div id="inicio" class="secao ativa">
+
+
+    <h1>Início</h1><br><br>
+    <h5>Objetivo:</h5>
+    <p>Calcular equações básicas presente no nosso cotidiano escolar!</p> 
+   <h5>Como usar:</h5>
+<p>Digite a expressão matemática usando os seguintes sinais:<br><br>
+
++ → adição (ex: 2+3)<br>
+- → subtração (ex: 5-2)<br>
+* → multiplicação (ex: 2*3)<br>
+/ → divisão (ex: 6/2)<br>
+^ → potência (ex: x^2 ou 2^3)<br>
+sqrt() → raiz quadrada (sqrt(9))<br><br>
+<h5>Você também pode usar parênteses:</h5>
+( ) → para organizar contas (ex: 2*(3+4))<br><br>
+
+<h5>Exemplos válidos:</h5>
+2+2<br>
+3*5<br>
+2^2+2(2)+sqrt(25)<br>
+(1+2)*3
+</p>
+  </div>
+<!-- Api Equação simples
+ -->
+<div id="sobre" class="secao text-center">
+
+  <h1>Faça suas Equações</h1>
+
+  <div class="d-flex flex-column align-items-center">
+    <input type="text" id="expressao" class="form-control w-50 mb-2" placeholder="Digite a expressão">
+    <button onclick="calcular()" class="btn btn-primary">Calcular</button>
+  </div>
+
+ <div id="resultado" class="output-box">
+  Resultado aparecerá aqui
+</div>
+<div class="imagem-container">
+  <img src="data:image/jpeg;base64,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" alt="Minha imagem">
+</div>
+</div>
+
+  </div>
+
+  <div id="contato" class="secao">
+
+    <h1>Equação do 2º</h1>
+<div class="d-flex flex-column align-items-center">
+
+  <div class="mb-3 text-center">
+    <h5>A</h5>
+    <input type="number" id="valor1" class="form-control w-100 text-center">
+  </div>
+
+  <div class="mb-3 text-center">
+    <h5>B</h5>
+    <input type="number" id="valor2" class="form-control w-100 text-center">
+  </div>
+
+  <div class="mb-3 text-center">
+    <h5>C</h5>
+    <input type="number" id="valor3" class="form-control w-100 text-center">
+  </div>
+
+  <button onclick="calcueq()" class="btn btn-primary">Calcular</button>
+
+</div>
+
+    <button onclick="calcueq()" class="btn btn-primary">Calcular</button>
+ <div id="resultad" class="output-box">
+  Resultado aparecerá aqui
+</div>
+  </div>
+
+
+</div>
+
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
